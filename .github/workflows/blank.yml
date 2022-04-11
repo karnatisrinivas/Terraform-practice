@@ -1,15 +1,19 @@
-name: actions practice 1
+name: Pull Request Action
 on:
   push:
     branches:
-      - main
+      - practice
+
 jobs:
-  productionPromotion:
+  create-pull-request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        
-     
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_label: "This PR is automated"
+          pr_title: " Simple automated PR"
