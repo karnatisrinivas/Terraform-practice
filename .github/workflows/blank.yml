@@ -14,6 +14,5 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "main"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_label: "This PR is automated"
           pr_title: " Simple automated PR"
